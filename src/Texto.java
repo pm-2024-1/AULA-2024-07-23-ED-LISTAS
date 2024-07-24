@@ -1,25 +1,21 @@
 import java.util.ArrayList;
-
+// "programacao  modular" => 
+// ["programacao", "", "modular"]
 class Texto {
-  static String[] split(String s) {
-    // não sei o tamanho final
-    // preciso manipular os elementos
-
+  static ArrayList<String> split(String s) {
     // texto de exemplo
-    int tamanho = 1;
-    for (int i = 0; i < s.length(); i++)
-      if (' ' == s.charAt(i)) tamanho++;
+    ArrayList<String> splitado = new ArrayList<>();
     
-    String[] splitado = new String[tamanho];
-    for (int i = 0; i < splitado.length; i++) {
-      splitado[i] = "";
-    }
-
-    int indice = 0;
+    String trecho = "";
     for (int i = 0; i < s.length(); i++) {
-      if (' ' == s.charAt(i)) indice++;
-      else splitado[indice] += s.charAt(i);
+      if (s.charAt(i) != ' ') {
+        trecho += s.charAt(i);
+      } else {
+        splitado.add(trecho);
+        trecho = "";
+      }
     }
+    splitado.add(trecho);
 
     return splitado;
   }
